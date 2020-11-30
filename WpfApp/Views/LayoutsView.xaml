@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="WpfApp.Views.LayoutsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <DockPanel >
+        <Button DockPanel.Dock="Bottom">Dock Bottom</Button>
+        <Button DockPanel.Dock="Left">Dock Left</Button>
+        <Button DockPanel.Dock="Top">Dock Top</Button>
+        <Button DockPanel.Dock="Right">Dock Right</Button>
+        <Button DockPanel.Dock="Bottom">Dock Bottom</Button>
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Width="150" Grid.Column="0" Grid.Row="1">Klik 1</Button>
+            <Button Width="50" Grid.Column="1" Grid.Row="2">Klik 2</Button>
+            <Button Width="200" Grid.Column="2" Grid.Row="3">Klik 3</Button>
+            <Button Width="100" Grid.Column="3" Grid.Row="0">Klik 4</Button>
+        </Grid>
+
+        <WrapPanel Orientation="Vertical" DockPanel.Dock="Left">
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <TextBox>Text</TextBox>
+            <Label>Label</Label>
+        </WrapPanel>
+
+
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+            <Button>Wrap Button</Button>
+        </StackPanel>
+
+        <Canvas>
+            <Rectangle Canvas.Top="35" Canvas.Left="15" Width="25" Height="50" Fill="Aqua" />
+        </Canvas>
+        
+    </DockPanel>
+    
+    
+</UserControl>
