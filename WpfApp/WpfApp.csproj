@@ -55,9 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\CustomCommand.cs" />
+    <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
+    <Compile Include="Views\EducatorDialog.xaml.cs">
+      <DependentUpon>EducatorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\EducatorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EducatorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
