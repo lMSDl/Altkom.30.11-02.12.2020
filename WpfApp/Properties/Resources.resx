@@ -120,6 +120,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="IndexNumber" xml:space="preserve">
+    <value>Numer indexu</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Nazwisko</value>
   </data>

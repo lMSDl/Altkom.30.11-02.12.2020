@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\CustomCommand.cs" />
     <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
+    <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="Views\EducatorDialog.xaml.cs">
       <DependentUpon>EducatorDialog.xaml</DependentUpon>
     </Compile>
