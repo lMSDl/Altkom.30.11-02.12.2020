@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Width="150" Grid.Column="0" Grid.Row="1">Klik 1</Button>
+            <Button Width="150" Grid.Column="0" Grid.RowSpan="2" Grid.Row="1">Klik 1</Button>
             <Button Width="50" Grid.Column="1" Grid.Row="2">Klik 2</Button>
             <Button Width="200" Grid.Column="2" Grid.Row="3">Klik 3</Button>
             <Button Width="100" Grid.Column="3" Grid.Row="0">Klik 4</Button>

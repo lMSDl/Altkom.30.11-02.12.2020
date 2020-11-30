@@ -6,6 +6,18 @@
         xmlns:local="clr-namespace:WpfApp.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left">
+                <ToggleButton x:Name="ToggleButton_Students"
+                              Click="ToggleButton_Click_Students">Students</ToggleButton>
+                <ToggleButton x:Name="ToggleButton_Educators"
+                              Click="ToggleButton_Click_Educators">Educators</ToggleButton>
+            </StackPanel>
+            <Frame DockPanel.Dock="Right"
+                   NavigationUIVisibility="Hidden"
+                   x:Name="Frame" />
 
-    <local:LayoutsExerciseView/>
+        </DockPanel>
+    </Grid>
 </Window>
