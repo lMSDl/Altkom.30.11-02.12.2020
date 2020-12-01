@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    public interface IStudentsService
+    public interface IStudentsService : ICrudService<Student>
     {
-        int Create(Student student);
-        Student Read(int id);
-        IEnumerable<Student> Read();
-        void Update(int id, Student student);
-        void Delete(int id);
     }
 }

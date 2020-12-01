@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,25 +12,28 @@ using WpfApp.Commands;
 
 namespace WpfApp.ViewModels
 {
-    public abstract class PeopleViewModel
+    public abstract class PeopleViewModel<T> where T : Person
     {
-        public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
-        public Person SelectedPerson { get; set; }
+        protected abstract ICrudService<T> Service { get; }
+
+        public ObservableCollection<T> People { get; } = new ObservableCollection<T>();
+        public T SelectedPerson { get; set; }
         public PeopleViewModel()
         {
-            Refresh();
+            People.Clear();
+            foreach (var person in Service.Read())
+            {
+                People.Add(person);
+            }
         }
 
-
-        public ICommand DeleteCommand => new CustomCommand(obj => { Delete(SelectedPerson.Id); People.Remove(SelectedPerson); }, obj => SelectedPerson != null && People.Contains(SelectedPerson));
+        public ICommand DeleteCommand => new CustomCommand(obj => { Service.Delete(SelectedPerson.Id); People.Remove(SelectedPerson); }, obj => SelectedPerson != null && People.Contains(SelectedPerson));
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(obj => AddOrEdit(SelectedPerson), obj => SelectedPerson != null);
 
-
-
-        public void AddOrEdit(Person person)
+        public void AddOrEdit(T person)
         {
-            var clone = (Person)person.Clone();
+            var clone = (T)person.Clone();
 
             var dialog = CreateAddEditDialog(clone);
             if (dialog.ShowDialog() != true)
@@ -39,21 +43,17 @@ namespace WpfApp.ViewModels
 
             if(clone.Id == 0)
             {
-                Add(clone);
+                clone.Id = Service.Create(clone);
             }
             else
             {
-                Update(clone.Id, clone);
+                Service.Update(clone.Id, clone);
                 People.Remove(person);
             }
             People.Add(clone);
         }
 
-        protected abstract void Delete(int id);
-        protected abstract void Refresh();
-        protected abstract void Update(int id, Person person);
-        protected abstract void Add(Person clone);
 
-        protected abstract Window CreateAddEditDialog(Person clone);
+        protected abstract Window CreateAddEditDialog(T clone);
     }
 }

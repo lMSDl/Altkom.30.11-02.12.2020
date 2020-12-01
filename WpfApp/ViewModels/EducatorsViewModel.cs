@@ -14,39 +14,16 @@ using WpfApp.Views;
 
 namespace WpfApp.ViewModels
 {
-    public class EducatorsViewModel : PeopleViewModel
+    public class EducatorsViewModel : PeopleViewModel<Educator>
     {
-        private IEducatorsService Service { get; } = new DbEducatorsService();
 
         public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Educator()), obj => true);
 
+        protected override ICrudService<Educator> Service { get; } = new DbEducatorsService();
 
-        protected override Window CreateAddEditDialog(Person clone)
+        protected override Window CreateAddEditDialog(Educator clone)
         {
             return new EducatorDialog(clone);
-        }
-
-        protected override void Add(Person clone)
-        {
-            clone.Id = Service.Create((Educator)clone);
-        }
-        protected override void Update(int id, Person person)
-        {
-            Service.Update(id, (Educator)person);
-        }
-
-        protected override void Refresh()
-        {
-            People.Clear();
-            foreach (var educator in Service.Read())
-            {
-                People.Add(educator);
-            }
-        }
-
-        protected override void Delete(int id)
-        {
-            Service.Delete(id);
         }
     }
 }
