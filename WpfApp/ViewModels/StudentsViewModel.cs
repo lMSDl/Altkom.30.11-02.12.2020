@@ -14,20 +14,27 @@ namespace WpfApp.ViewModels
 {
     public class StudentsViewModel : PeopleViewModel
     {
-        public StudentsViewModel() : base(new List<Student>()
-            {
-                new Student() { FirstName = "Ewa", LastName = "Ewowska", IndexNumber = 512312},
-                new Student() { FirstName = "Roman", LastName = "Romanowski", IndexNumber = 827123 },
-                new Student() { FirstName = "Tadeusz", LastName = "Tadeuszowski", IndexNumber = 992712 },
-            })
-        {
-        }
-
         public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Student()), obj => true);
-
+        
         protected override Window CreateAddEditDialog(Person clone)
         {
             return new StudentDialog(clone);
+        }
+
+        protected override void Add(Person clone)
+        {
+        }
+
+        protected override void Refresh()
+        {
+        }
+
+        protected override void Update(int id, Person clone)
+        {
+        }
+
+        protected override void Delete(int id)
+        {
         }
     }
 }

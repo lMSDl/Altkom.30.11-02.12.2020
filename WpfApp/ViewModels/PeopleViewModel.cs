@@ -13,21 +13,19 @@ namespace WpfApp.ViewModels
 {
     public abstract class PeopleViewModel
     {
-        public ObservableCollection<Person> People { get; }
+        public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
         public Person SelectedPerson { get; set; }
-        public PeopleViewModel(IEnumerable<Person> initialPeople)
+        public PeopleViewModel()
         {
-            People = new ObservableCollection<Person>(initialPeople);
-
-            DeleteCommand = new CustomCommand(
-                obj => People.Remove(SelectedPerson),
-                obj => SelectedPerson != null && People.Contains(SelectedPerson)
-                );
+            Refresh();
         }
 
-        public ICommand DeleteCommand { get; set; }
+
+        public ICommand DeleteCommand => new CustomCommand(obj => { Delete(SelectedPerson.Id); People.Remove(SelectedPerson); }, obj => SelectedPerson != null && People.Contains(SelectedPerson));
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(obj => AddOrEdit(SelectedPerson), obj => SelectedPerson != null);
+
+
 
         public void AddOrEdit(Person person)
         {
@@ -39,9 +37,22 @@ namespace WpfApp.ViewModels
                 return;
             }
 
-            People.Remove(person);
+            if(clone.Id == 0)
+            {
+                Add(clone);
+            }
+            else
+            {
+                Update(clone.Id, clone);
+                People.Remove(person);
+            }
             People.Add(clone);
         }
+
+        protected abstract void Delete(int id);
+        protected abstract void Refresh();
+        protected abstract void Update(int id, Person person);
+        protected abstract void Add(Person clone);
 
         protected abstract Window CreateAddEditDialog(Person clone);
     }
