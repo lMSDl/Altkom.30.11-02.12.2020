@@ -18,8 +18,8 @@
             <Button Content="Edytuj" Command="{Binding EditCommand}"/>
             <Button Content="Usuń" Command="{Binding DeleteCommand}"/>
         </StackPanel>
-        <DataGrid ItemsSource="{Binding Students}"
-                  SelectedItem="{Binding SelectedStudent}"
+        <DataGrid ItemsSource="{Binding People}"
+                  SelectedItem="{Binding SelectedPerson}"
                       AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static properties:Resources.FirstName}" Binding="{Binding FirstName}" />

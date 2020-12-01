@@ -15,11 +15,11 @@
         </WrapPanel>
         <StackPanel Orientation="Vertical">
             <Label Content="{x:Static properties:Resources.FirstName}"/>
-            <TextBox Text="{Binding Student.FirstName}"/>
+            <TextBox Text="{Binding Person.FirstName}"/>
             <Label Content="{x:Static properties:Resources.LastName}"/>
-            <TextBox Text="{Binding Student.LastName}"/>
+            <TextBox Text="{Binding Person.LastName}"/>
             <Label Content="{x:Static properties:Resources.IndexNumber}"/>
-            <TextBox Text="{Binding Student.IndexNumber}"/>
+            <TextBox Text="{Binding Person.IndexNumber}"/>
         </StackPanel>
     </DockPanel>
 </Window>

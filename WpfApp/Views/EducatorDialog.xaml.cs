@@ -21,10 +21,10 @@ namespace WpfApp.Views
     /// </summary>
     public partial class EducatorDialog : Window
     {
-        public EducatorDialog(Educator educator)
+        public EducatorDialog(Person person)
         {
             InitializeComponent();
-            DataContext = new EducatorDialogViewModel() { Educator = educator };
+            DataContext = new PersonDialogViewModel() { Person = person };
         }
     }
 }

@@ -56,8 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\CustomCommand.cs" />
-    <Compile Include="ViewModels\StudentDialogViewModel.cs" />
-    <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="Views\StudentDialog.xaml.cs">
       <DependentUpon>StudentDialog.xaml</DependentUpon>
