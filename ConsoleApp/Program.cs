@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Lambda;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace ConsoleApp
 
             //test.OddNumberEvent = delegate () { };
             //test.OddNumberEvent = null;
+
+            new Linq().Test();
         }
     }
 }

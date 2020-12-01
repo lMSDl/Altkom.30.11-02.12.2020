@@ -8,6 +8,6 @@ namespace Models
 {
     public class Student : Person
     {
-        //public int IndexNumber { get; set; }
+        public int IndexNumber { get; set; }
     }
 }

@@ -48,11 +48,19 @@
     <Compile Include="Delegates\Events.cs" />
     <Compile Include="Delegates\MulticastDelegates.cs" />
     <Compile Include="Lambda\Lambda.cs" />
+    <Compile Include="Lambda\Linq.cs" />
+    <Compile Include="Operators\Operators.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfApp\Models\Models.csproj">
+      <Project>{888FAFD3-5EE2-4B56-AD56-49BE93C8511B}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
