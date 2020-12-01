@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfApp.Views.EducatorDialog"
+﻿<Window x:Class="WpfApp.Views.StudentDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,11 +15,11 @@
         </WrapPanel>
         <StackPanel Orientation="Vertical">
             <Label Content="{x:Static properties:Resources.FirstName}"/>
-            <TextBox Text="{Binding Educator.FirstName}"/>
+            <TextBox Text="{Binding Student.FirstName}"/>
             <Label Content="{x:Static properties:Resources.LastName}"/>
-            <TextBox Text="{Binding Educator.LastName}"/>
-            <Label Content="{x:Static properties:Resources.Specialization}"/>
-            <TextBox Text="{Binding Educator.Specialization}"/>
+            <TextBox Text="{Binding Student.LastName}"/>
+            <Label Content="{x:Static properties:Resources.IndexNumber}"/>
+            <TextBox Text="{Binding Student.IndexNumber}"/>
         </StackPanel>
     </DockPanel>
 </Window>

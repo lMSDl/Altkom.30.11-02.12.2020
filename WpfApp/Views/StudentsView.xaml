@@ -12,13 +12,20 @@
     <Page.DataContext>
         <viewModels:StudentsViewModel/>
     </Page.DataContext>
-
-    <DataGrid ItemsSource="{Binding Students}"
-                  AutoGenerateColumns="False" IsReadOnly="True">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="{x:Static properties:Resources.FirstName}" Binding="{Binding FirstName}" />
-            <DataGridTextColumn Header="{x:Static properties:Resources.LastName}" Binding="{Binding LastName}" />
-            <DataGridTextColumn Header="{x:Static properties:Resources.IndexNumber}" Binding="{Binding IndexNumber}" />
-        </DataGrid.Columns>
-    </DataGrid>
+    <DockPanel>
+        <StackPanel>
+            <Button Content="Dodaj" Command="{Binding AddCommand}"/>
+            <Button Content="Edytuj" Command="{Binding EditCommand}"/>
+            <Button Content="Usuń" Command="{Binding DeleteCommand}"/>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding Students}"
+                  SelectedItem="{Binding SelectedStudent}"
+                      AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static properties:Resources.FirstName}" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="{x:Static properties:Resources.LastName}" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="{x:Static properties:Resources.IndexNumber}" Binding="{Binding IndexNumber}" />
+            </DataGrid.Columns>
+        </DataGrid>
+     </DockPanel>
 </Page>

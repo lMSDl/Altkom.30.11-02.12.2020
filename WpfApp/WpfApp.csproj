@@ -56,14 +56,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\CustomCommand.cs" />
+    <Compile Include="ViewModels\StudentDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
+    <Compile Include="Views\StudentDialog.xaml.cs">
+      <DependentUpon>StudentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EducatorDialog.xaml.cs">
       <DependentUpon>EducatorDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\StudentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EducatorDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
