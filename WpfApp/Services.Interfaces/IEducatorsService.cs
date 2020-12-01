@@ -9,5 +9,6 @@ namespace Services.Interfaces
 {
     public interface IEducatorsService : ICrudService<Educator>
     {
+        IEnumerable<Educator> ReadBySpecialization(string specialization);
     }
 }

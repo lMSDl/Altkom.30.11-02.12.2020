@@ -14,11 +14,11 @@ using WpfApp.Views;
 
 namespace WpfApp.ViewModels
 {
-    public class StudentsViewModel : PeopleViewModel<Student>
+    public class StudentsViewModel : PeopleViewModel<Student, IStudentsService>
     {
         public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Student()), obj => true);
 
-        protected override ICrudService<Student> Service { get; } = new DbStudentsService();
+        protected override IStudentsService Service { get; } = new DbStudentsService();
 
         protected override Window CreateAddEditDialog(Student clone)
         {

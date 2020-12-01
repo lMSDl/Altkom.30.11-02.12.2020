@@ -12,12 +12,12 @@ using WpfApp.Commands;
 
 namespace WpfApp.ViewModels
 {
-    public abstract class PeopleViewModel<T> where T : Person
+    public abstract class PeopleViewModel<TEntity, TService> where TEntity : Person where TService : ICrudService<TEntity>
     {
-        protected abstract ICrudService<T> Service { get; }
+        protected abstract TService Service { get; }
 
-        public ObservableCollection<T> People { get; } = new ObservableCollection<T>();
-        public T SelectedPerson { get; set; }
+        public ObservableCollection<TEntity> People { get; } = new ObservableCollection<TEntity>();
+        public TEntity SelectedPerson { get; set; }
         public PeopleViewModel()
         {
             People.Clear();
@@ -31,9 +31,9 @@ namespace WpfApp.ViewModels
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(obj => AddOrEdit(SelectedPerson), obj => SelectedPerson != null);
 
-        public void AddOrEdit(T person)
+        public void AddOrEdit(TEntity person)
         {
-            var clone = (T)person.Clone();
+            var clone = (TEntity)person.Clone();
 
             var dialog = CreateAddEditDialog(clone);
             if (dialog.ShowDialog() != true)
@@ -54,6 +54,6 @@ namespace WpfApp.ViewModels
         }
 
 
-        protected abstract Window CreateAddEditDialog(T clone);
+        protected abstract Window CreateAddEditDialog(TEntity clone);
     }
 }

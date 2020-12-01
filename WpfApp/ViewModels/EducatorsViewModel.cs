@@ -14,12 +14,21 @@ using WpfApp.Views;
 
 namespace WpfApp.ViewModels
 {
-    public class EducatorsViewModel : PeopleViewModel<Educator>
+    public class EducatorsViewModel : PeopleViewModel<Educator, IEducatorsService>
     {
+
+        public EducatorsViewModel()
+        {
+            People.Clear();
+            foreach(var item in Service.ReadBySpecialization("IT"))
+            {
+                People.Add(item);
+            }
+        }
 
         public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Educator()), obj => true);
 
-        protected override ICrudService<Educator> Service { get; } = new DbEducatorsService();
+        protected override IEducatorsService Service { get; } = new DbEducatorsService();
 
         protected override Window CreateAddEditDialog(Educator clone)
         {
