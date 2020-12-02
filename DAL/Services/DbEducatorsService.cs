@@ -17,7 +17,7 @@ namespace DAL.Services
             {
                 //var item = context.Set<Educator>().Select(x => new { myName1 = x.LastName, myName2 = x.FirstName }).First();
 
-                return context.Database.SqlQuery<Educator>("SELECT  FROM Educators WHERE Specialization = @spec", new SqlParameter("@spec", specialization)).ToList();
+                return context.Database.SqlQuery<Educator>("SELECT * FROM Educators WHERE Specialization = @spec", new SqlParameter("@spec", specialization)).ToList();
                 //return context.Set<Educator>().SqlQuery("SELECT * FROM Educators WHERE Specialization = @spec", new SqlParameter("@spec", specialization)).ToList();
             }
         }

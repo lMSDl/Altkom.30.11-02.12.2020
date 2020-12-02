@@ -16,6 +16,9 @@
             <Button Content="Dodaj" Command="{Binding AddCommand}"/>
             <Button Content="Edytuj" Command="{Binding EditCommand}"/>
             <Button Content="Usuń" Command="{Binding DeleteCommand}"/>
+            <Button Content="Export" Command="{Binding ExportCommand}"/>
+            <Button Content="ExportXml" Command="{Binding ExportXmlCommand}"/>
+            <Button Content="Import" Command="{Binding ImportCommand}"/>
         </StackPanel>
         
         <DataGrid ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}"

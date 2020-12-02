@@ -19,11 +19,11 @@ namespace WpfApp.ViewModels
 
         public EducatorsViewModel()
         {
-            People.Clear();
-            foreach(var item in Service.ReadBySpecialization("IT"))
-            {
-                People.Add(item);
-            }
+            //People.Clear();
+            //foreach(var item in Service.ReadBySpecialization("IT"))
+            //{
+            //    People.Add(item);
+            //}
         }
 
         public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Educator()), obj => true);
