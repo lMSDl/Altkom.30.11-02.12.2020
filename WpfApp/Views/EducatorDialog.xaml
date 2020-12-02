@@ -17,9 +17,10 @@
             <Label Content="{x:Static properties:Resources.FirstName}"/>
             <TextBox Text="{Binding Person.FirstName}"/>
             <Label Content="{x:Static properties:Resources.LastName}"/>
-            <TextBox Text="{Binding Person.LastName}"/>
+            <TextBox Text="{Binding Person.LastName, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="{x:Static properties:Resources.Specialization}"/>
             <TextBox Text="{Binding Person.Specialization}"/>
+                <Label Content="{Binding Person.Error}" Background="Red"/>
         </StackPanel>
     </DockPanel>
 </Window>

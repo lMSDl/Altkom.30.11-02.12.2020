@@ -14,6 +14,6 @@ namespace WpfApp.ViewModels
     {
         public Person Person { get; set; }
 
-        public ICommand OkCommand => new CustomCommand(x => ((Window)x).DialogResult = true, obj => true);
+        public ICommand OkCommand => new CustomCommand(x => ((Window)x).DialogResult = true, obj => string.IsNullOrWhiteSpace(Person.Error));
     }
 }

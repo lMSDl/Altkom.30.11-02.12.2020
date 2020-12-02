@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public abstract class Entity
+    public abstract class Entity : DataErrorInfo
     {
         [JsonIgnore]
         public int Id { get; set; }

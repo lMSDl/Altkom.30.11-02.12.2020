@@ -42,6 +42,9 @@ namespace WebApi.Controllers
         // POST api/values
         public Task<int> Post([FromBody]Educator educator)
         {
+            if (!ModelState.IsValid)
+                return Task.FromResult(-1);
+
             return Service.CreateAsync(educator);
         }
 
