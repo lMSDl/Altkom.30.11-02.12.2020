@@ -25,6 +25,12 @@ namespace ConsoleApp
             //test.OddNumberEvent = null;
 
             new Linq().Test();
+
+
+            var service = new CalculatorService.CalculatorClient();
+            Console.WriteLine($"2*5={service.Multiply(2, 5)}");
+
+            Console.WriteLine(string.Join( " ", new EducatorsService.EducatorsServiceClient().Read().Select(x => x.FirstName + x.LastName)));
         }
     }
 }
