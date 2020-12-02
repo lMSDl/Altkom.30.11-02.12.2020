@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace WebApi.Controllers
@@ -15,15 +17,16 @@ namespace WebApi.Controllers
         private IEducatorsService Service { get; } = new DbEducatorsService();
 
         [HttpGet]
-        public IEnumerable<Educator> Read()
+        public Task<IEnumerable<Educator>> Read()
         {
-            return Service.Read();
+            Thread.Sleep(5000);
+            return Service.ReadAsync();
         }
 
         // GET api/values/5
-        public Educator Get(int id)
+        public Task<Educator> Get(int id)
         {
-            return Service.Read(id);
+            return Service.ReadAsync(id);
         }
 
         // api/Educators/Specialization/[value]
@@ -37,21 +40,21 @@ namespace WebApi.Controllers
         }
 
         // POST api/values
-        public int Post([FromBody]Educator educator)
+        public Task<int> Post([FromBody]Educator educator)
         {
-            return Service.Create(educator);
+            return Service.CreateAsync(educator);
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]Educator educator)
+        public Task Put(int id, [FromBody]Educator educator)
         {
-            Service.Update(id, educator);
+            return Service.UpdateAsync(id, educator);
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public Task Delete(int id)
         {
-            Service.Delete(id);
+            return Service.DeleteAsync(id);
         }
     }
 }

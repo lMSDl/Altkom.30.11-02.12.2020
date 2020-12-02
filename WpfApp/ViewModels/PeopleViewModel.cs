@@ -23,16 +23,21 @@ namespace WpfApp.ViewModels
         public TEntity SelectedPerson { get; set; }
         public PeopleViewModel()
         {
+            _ = LoadAsync();
+        }
+
+        private async Task LoadAsync()
+        {
             People.Clear();
-            foreach (var person in Service.Read())
+            foreach (var person in await Service.ReadAsync())
             {
                 People.Add(person);
             }
         }
 
-        public ICommand DeleteCommand => new CustomCommand(obj => { Service.Delete(SelectedPerson.Id); People.Remove(SelectedPerson); }, obj => SelectedPerson != null && People.Contains(SelectedPerson));
+        public ICommand DeleteCommand => new CustomCommand(async obj => { await Service.DeleteAsync(SelectedPerson.Id); People.Remove(SelectedPerson); }, obj => SelectedPerson != null && People.Contains(SelectedPerson));
         public abstract ICommand AddCommand { get; }
-        public ICommand EditCommand => new CustomCommand(obj => AddOrEdit(SelectedPerson), obj => SelectedPerson != null);
+        public ICommand EditCommand => new CustomCommand(async obj => await AddOrEditAsync(SelectedPerson), obj => SelectedPerson != null);
 
         public ICommand ExportCommand => new CustomCommand(x => Export(SelectedPerson), x => SelectedPerson != null);
         public ICommand ExportXmlCommand => new CustomCommand(x => ExportXml(SelectedPerson), x => SelectedPerson != null);
@@ -100,10 +105,10 @@ namespace WpfApp.ViewModels
             }
             var person = JsonConvert.DeserializeObject<TEntity>(File.ReadAllText(dialog.FileName));
             person.Id = 0;
-            AddOrEdit(person);
+            _ = AddOrEditAsync(person);
         }
 
-        public void AddOrEdit(TEntity person)
+        public async Task AddOrEditAsync(TEntity person)
         {
             var clone = (TEntity)person.Clone();
 
@@ -115,11 +120,11 @@ namespace WpfApp.ViewModels
 
             if(clone.Id == 0)
             {
-                clone.Id = Service.Create(clone);
+                clone.Id = await Service.CreateAsync(clone);
             }
             else
             {
-                Service.Update(clone.Id, clone);
+                await Service.UpdateAsync(clone.Id, clone);
                 People.Remove(person);
             }
             People.Add(clone);

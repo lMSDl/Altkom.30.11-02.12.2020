@@ -1,5 +1,6 @@
 ﻿using DAL.Services;
 using Models;
+using Services.Client;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,9 @@ namespace WpfApp.ViewModels
             //}
         }
 
-        public override ICommand AddCommand => new CustomCommand(obj => AddOrEdit(new Educator()), obj => true);
+        public override ICommand AddCommand => new CustomCommand(async obj => await AddOrEditAsync(new Educator()), obj => true);
 
-        protected override IEducatorsService Service { get; } = new DbEducatorsService();
+        protected override IEducatorsService Service { get; } = new EducatorsService();
 
         protected override Window CreateAddEditDialog(Educator clone)
         {

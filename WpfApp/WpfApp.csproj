@@ -161,6 +161,10 @@
       <Project>{BE8A177E-5EA1-41B3-89C1-B624FFE4A477}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services.Client\Services.Client.csproj">
+      <Project>{AB4C92F7-A5AE-4C36-937A-1ADBBFBB022A}</Project>
+      <Name>Services.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="Models\Models.csproj">
       <Project>{888fafd3-5ee2-4b56-ad56-49be93c8511b}</Project>
       <Name>Models</Name>

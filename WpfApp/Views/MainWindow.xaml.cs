@@ -25,19 +25,16 @@ namespace WpfApp.Views
             InitializeComponent();
         }
 
-        private readonly Page _students = new StudentsView();
-        private readonly Page _educators = new EducatorsView();
-
         private void ToggleButton_Click_Educators(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(_educators);
+            Frame.Navigate(new EducatorsView());
             ToggleButton_Educators.IsChecked = true;
             ToggleButton_Students.IsChecked = false;
         }
 
         private void ToggleButton_Click_Students(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(_students);
+            Frame.Navigate(new StudentsView());
             ToggleButton_Educators.IsChecked = false;
             ToggleButton_Students.IsChecked = true;
         }
