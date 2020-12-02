@@ -9,7 +9,7 @@ namespace Models
 {
     public abstract class Person : Entity, ICloneable
     {
-        [JsonProperty(PropertyName = "Imię")]
+        [JsonProperty(PropertyName = "Nazwisko")]
         public string LastName { get; set; }
         public string FirstName { get; set; }
 
