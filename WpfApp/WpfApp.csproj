@@ -69,6 +69,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\CustomCommand.cs" />
+    <Compile Include="Encryptors\AsymmetricEncryptor.cs" />
+    <Compile Include="Encryptors\Encryptor.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
